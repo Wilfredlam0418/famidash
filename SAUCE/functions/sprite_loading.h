@@ -496,7 +496,7 @@ static void sprite_gamemode_main() {
 			case BLUE_ORB_MULTI:
 			case BLUE_ORB:
 				if (!activesprites_activated[index]) {
-					invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+					invert_gravity(currplayer_gravity);
 					update_currplayer_table_idx();
 					dual_cap_check();
 					if (gamemode != BALL_MODE) {
@@ -509,7 +509,7 @@ static void sprite_gamemode_main() {
 			case GREEN_ORB_MULTI:
 			case GREEN_ORB:
 				if (!activesprites_activated[index]) {
-					invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+					invert_gravity(currplayer_gravity);
 					update_currplayer_table_idx();
 					dual_cap_check();
 					currplayer_vel_y = sprite_gamemode_y_adjust();
@@ -965,12 +965,9 @@ void sprite_collide_lookup() {
 		if (!activesprites_activated[index]) {
 			dual = 1;
 			target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
-			if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 0xFF;  }
-			else { 
-				player_relx[1] = player_relx[0]; player_rely[1] = currplayer_rely;
-				player_gravity[1] = currplayer_gravity ^ 0xFF;
-				player_vel_y[1] = -currplayer_vel_y; player_mini[1] = player_mini[0];
-			}
+			player_relx[1] = player_relx[0]; player_rely[1] = currplayer_rely;
+			player_gravity[1] = currplayer_gravity ^ 0xFF;
+			player_vel_y[1] = -currplayer_vel_y; player_mini[1] = player_mini[0];
 			// activesprites_type[index] = 0xFF;
 			activesprites_activated[index] = 1;
 		}
@@ -978,8 +975,7 @@ void sprite_collide_lookup() {
 	
 	spcl_sngl_pt:
 		if (!activesprites_activated[index]) {
-			if (!twoplayer) { dual = 0; player_rely[0] = currplayer_rely; player_gravity[0] = currplayer_gravity; player_vel_y[0] = currplayer_vel_y; }
-			else { player_gravity[1] = player_gravity[0]; }
+			dual = 0; player_rely[0] = currplayer_rely; player_gravity[0] = currplayer_gravity; player_vel_y[0] = currplayer_vel_y;
 			activesprites_activated[index] = 1;
 
 			// activesprites_type[index] = 0xFF;

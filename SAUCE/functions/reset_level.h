@@ -132,7 +132,7 @@ void reset_level() {
 
 
 	outline_color = 0x30;	
-	dual = twoplayer ? 1 : 0;
+	dual = 0;
 	player_gravity[0] = GRAVITY_DOWN;
 
 
@@ -149,7 +149,7 @@ void reset_level() {
 
 	target_scroll_y = scroll_y;
 
-	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
+	player_gravity[1] = GRAVITY_UP;
 
 	currplayer_gravity = GRAVITY_DOWN;
 

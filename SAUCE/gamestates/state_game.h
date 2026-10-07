@@ -347,11 +347,6 @@ void everything_else() {
 				// yo actually wtf is this
 				joypad2.hold = joypad1.hold<<1; // read the second controller
 				joypad2.press = joypad1.press<<1;
-				dual = 1;
-			}
-			else if (twoplayer) {
-				// pad_poll(1); // read the second controller
-				dual = 1;
 			}
 			
 			if (!(joypad1.hold & (PAD_A | PAD_UP))) {

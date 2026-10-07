@@ -130,10 +130,10 @@ void x_movement(){
 		else if (!(controllingplayer->hold & (PAD_A | PAD_UP))) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 	}
 	else {
-		if (currplayer_rely < 0x0600 && !dual && !twoplayer){
+		if (currplayer_rely < 0x0600 && !dual){
 			currplayer_rely = 0xF900;
 		}		
-		else if (currplayer_rely > 0xF900 && !dual && !twoplayer){
+		else if (currplayer_rely > 0xF900 && !dual){
 			currplayer_rely = 0x0600;
 		}		
 		else if (!(controllingplayer->hold & (PAD_A | PAD_UP))) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
