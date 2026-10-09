@@ -497,6 +497,9 @@ static void sprite_gamemode_main() {
 			case BLUE_ORB:
 				if (!activesprites_activated[index]) {
 					invert_gravity(currplayer_gravity);
+					if (!twoplayer) {
+						invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+					}
 					update_currplayer_table_idx();
 					dual_cap_check();
 					if (gamemode != BALL_MODE) {
@@ -510,6 +513,9 @@ static void sprite_gamemode_main() {
 			case GREEN_ORB:
 				if (!activesprites_activated[index]) {
 					invert_gravity(currplayer_gravity);
+					if (!twoplayer) {
+						invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+					}
 					update_currplayer_table_idx();
 					dual_cap_check();
 					currplayer_vel_y = sprite_gamemode_y_adjust();
